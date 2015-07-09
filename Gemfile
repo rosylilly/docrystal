@@ -7,6 +7,7 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'hiredis'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'octokit'
 gem 'pg'
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'redis', require: %w(redis redis/connection/hiredis)
@@ -27,5 +28,6 @@ group :development do
 end
 
 group :test do
+  gem 'database_rewinder'
   gem 'minitest-power_assert'
 end
