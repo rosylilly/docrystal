@@ -1,0 +1,36 @@
+AllCops:
+  Include:
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'bin/**/*'
+    - 'vendor/bundle/**/*'
+    - 'db/schema.rb'
+  RunRailsCops: true
+  DisplayCopNames: true
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/Documentation:
+  Enabled: false
+
+Style/FileName:
+  Exclude:
+    - '**/Gemfile'
+    - '**/Guardfile'
+
+Style/RegexpLiteral:
+  EnforcedStyle: percent_r
+  AllowInnerSlashes: false
+
+Metrics/LineLength:
+  Max: 240
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*'
+
+Metrics/AbcSize:
+  Max: 25
