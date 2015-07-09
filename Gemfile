@@ -29,5 +29,8 @@ end
 
 group :test do
   gem 'database_rewinder'
+  gem 'minitest-around'
   gem 'minitest-power_assert'
+  gem 'vcr'
+  gem 'webmock'
 end

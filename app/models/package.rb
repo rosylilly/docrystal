@@ -8,6 +8,7 @@ class Package < ActiveRecord::Base
   validates :hosting, presence: true, inclusion: { in: HOSTINGS }
   validates :owner, presence: true
   validates :repo, presence: true, uniqueness: { scope: %i(hosting owner) }
+  validates :github_repository, presence: true
 
   after_initialize :set_hosting_and_owner_and_repo_by_url
 
@@ -28,6 +29,12 @@ class Package < ActiveRecord::Base
 
   def github_repository
     Octokit.repo(github_repo_name)
+  rescue Octokit::NotFound
+    nil
+  end
+
+  def default_branch
+    github_repository.default_branch
   end
 
   private

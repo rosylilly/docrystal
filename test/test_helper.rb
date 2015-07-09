@@ -10,10 +10,6 @@ require 'minitest/rails'
 # Uncomment for awesome colorful output
 require "minitest/pride"
 
-class ActiveSupport::TestCase
-  fixtures :all
-end
-
 Dir[Rails.root.join('test/support/**/*.rb').to_s].each do |support|
   require support
 end
