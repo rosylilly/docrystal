@@ -34,6 +34,8 @@ module Docrystal
 
     config.generators do |g|
       g.test_framework :minitest, spec: true, fixture: false
+      g.helper false
+      g.assets false
     end
 
     config.active_job.queue_adapter = :sidekiq

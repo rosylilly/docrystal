@@ -11,7 +11,7 @@ describe Package do
     it 'generate attributes by url' do
       attrs = Package.attributes_by_url(power_assert_url)
 
-      assert attrs[:hosting] == 'github'
+      assert attrs[:hosting] == 'github.com'
       assert attrs[:owner] == 'rosylilly'
       assert attrs[:repo] == 'power_assert.cr'
     end
@@ -37,7 +37,7 @@ describe Package do
 
   describe '#set_hosting_and_owner_and_repo_by_url' do
     it 'auto set attributes' do
-      assert package.hosting == 'github'
+      assert package.hosting == 'github.com'
       assert package.owner == 'rosylilly'
       assert package.repo == 'power_assert.cr'
     end

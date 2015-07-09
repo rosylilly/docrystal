@@ -1,9 +1,12 @@
 class Package < ActiveRecord::Base
-  HOSTINGS = %w(github)
-
-  GITHUB_URL_REGEXP = %r{https?://github\.com/(?<owner>[a-zA-Z0-9](?:[a-zA-Z0-9-]+))/(?<repo>[^/]+)(?:$|/)}
+  HOSTINGS = %w(github.com)
+  GITHUB_USER_NAME_REGEXP = %r{[a-zA-Z0-9](?:[a-zA-Z0-9-]+)}
+  GITHUB_REPO_NAME_REGEXP = %r{[^/]+}
+  GITHUB_URL_REGEXP = %r{https?://github\.com/(?<owner>#{GITHUB_USER_NAME_REGEXP})/(?<repo>#{GITHUB_REPO_NAME_REGEXP})(?:$|/)}x
 
   attr_accessor :url
+
+  has_many :docs, class_name: 'Package::Doc'
 
   validates :hosting, presence: true, inclusion: { in: HOSTINGS }
   validates :owner, presence: true
@@ -17,10 +20,14 @@ class Package < ActiveRecord::Base
     return {} unless match
 
     {
-      hosting: 'github',
+      hosting: 'github.com',
       owner: match[:owner],
       repo: match[:repo]
     }
+  end
+
+  def path
+    [hosting, owner, repo].join('/')
   end
 
   def github_repo_name

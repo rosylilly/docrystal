@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.2.2'
 
+gem 'action_args'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'hiredis'
@@ -13,6 +14,7 @@ gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'redis', require: %w(redis redis/connection/hiredis)
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
+gem 'slim-rails'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
@@ -25,6 +27,7 @@ end
 group :development do
   gem 'rubocop', require: false
   gem 'parser', '~> 2.2.2', require: false
+  gem 'sinatra', require: false
 end
 
 group :test do
