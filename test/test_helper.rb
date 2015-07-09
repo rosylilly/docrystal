@@ -8,10 +8,12 @@ require 'minitest/rails'
 # require "minitest/rails/capybara"
 
 # Uncomment for awesome colorful output
-# require "minitest/pride"
+require "minitest/pride"
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
-  # Add more helper methods to be used by all tests here...
+end
+
+Dir[Rails.root.join('test/support/**/*.rb').to_s].each do |support|
+  require support
 end

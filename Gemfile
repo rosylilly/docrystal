@@ -2,13 +2,17 @@ source 'https://rubygems.org'
 
 ruby '2.2.2'
 
-gem 'rails', github: 'rails/rails', branch: '4-2-stable'
-gem 'pg'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'hiredis'
 gem 'jbuilder', '~> 2.0'
+gem 'jquery-rails'
+gem 'pg'
+gem 'rails', github: 'rails/rails', branch: '4-2-stable'
+gem 'redis', require: %w(redis redis/connection/hiredis)
+gem 'sass-rails', '~> 5.0'
+gem 'sidekiq'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug'
