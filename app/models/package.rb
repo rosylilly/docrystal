@@ -28,7 +28,7 @@ class Package < ActiveRecord::Base
   end
 
   def github_repository
-    Octokit.repo(github_repo_name)
+    Octokit.repository(github_repo_name)
   rescue Octokit::NotFound
     nil
   end

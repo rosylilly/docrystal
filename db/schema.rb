@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709184731) do
+ActiveRecord::Schema.define(version: 20150709203600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "package_docs", force: :cascade do |t|
+    t.integer  "package_id",   null: false
+    t.string   "name"
+    t.string   "sha",          null: false
+    t.datetime "generated_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "package_docs", ["package_id", "name", "sha"], name: "index_package_docs_on_package_id_and_name_and_sha", unique: true, using: :btree
+  add_index "package_docs", ["package_id", "name"], name: "index_package_docs_on_package_id_and_name", unique: true, using: :btree
+  add_index "package_docs", ["package_id"], name: "index_package_docs_on_package_id", using: :btree
 
   create_table "packages", force: :cascade do |t|
     t.string   "hosting",    null: false
@@ -26,4 +39,5 @@ ActiveRecord::Schema.define(version: 20150709184731) do
 
   add_index "packages", ["hosting", "owner", "repo"], name: "index_packages_on_hosting_and_owner_and_repo", unique: true, using: :btree
 
+  add_foreign_key "package_docs", "packages"
 end
