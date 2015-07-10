@@ -19,6 +19,7 @@ gem 'neat'
 gem 'octokit'
 gem 'pg'
 gem 'puma'
+gem 'pusher'
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'redis', require: %w(redis redis/connection/hiredis)
 gem 'sass-rails', '~> 5.0'
