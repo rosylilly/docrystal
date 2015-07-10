@@ -21,3 +21,7 @@ ex: <http://www.docrystal.org/github.com/rosylilly/power_assert.cr/v0.2.0>
 ## Author
 
 - Sho Kusano / [@rosylilly](https://github.com/rosylilly)
+
+## Please help me!
+
+[![Gratipay](https://img.shields.io/gratipay/rosylilly.svg?style=flat-square)](https://gratipay.com/rosylilly/)
