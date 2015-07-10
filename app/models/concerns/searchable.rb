@@ -43,6 +43,6 @@ module Searchable
   end
 
   def as_indexed_json(options = {})
-    super(options).merge(path: path.to_s)
+    as_json(options.merge(root: false)).merge('path' => path.to_s)
   end
 end
