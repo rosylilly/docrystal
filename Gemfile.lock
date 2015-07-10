@@ -184,6 +184,7 @@ GEM
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    rack-rewrite (1.5.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails-deprecated_sanitizer (1.0.3)
@@ -302,6 +303,7 @@ DEPENDENCIES
   pg
   puma
   pusher
+  rack-rewrite
   rails!
   rails_12factor
   redis
