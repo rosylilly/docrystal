@@ -44,12 +44,12 @@ class Package::Doc < ActiveRecord::Base
   end
 
   def update_by_github
-    if name != sha
-      self.sha = nil
-      detect_sha_by_branch
-      detect_sha_by_tag
-      save
-    end
+    return if name == sha
+
+    self.sha = nil
+    detect_sha_by_branch
+    detect_sha_by_tag
+    save
   end
 
   private

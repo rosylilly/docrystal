@@ -27,10 +27,10 @@ class DocsController < ApplicationController
 
     @doc.update_by_github
 
-    unless @doc.generated?
-      render :wait
-    else
+    if @doc.generated?
       redirect_to '/' + @doc.path.join('index.html').to_s
+    else
+      render :wait
     end
   end
 
@@ -40,8 +40,6 @@ class DocsController < ApplicationController
 
     @file = @doc.get_doc_file(file)
 
-    if stale?(etag: @file.etag, last_modified: @file.last_modified, public: true)
-      render s3: @file
-    end
+    render(s3: @file) if stale?(etag: @file.etag, last_modified: @file.last_modified, public: true)
   end
 end
