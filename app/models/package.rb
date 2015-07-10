@@ -16,6 +16,7 @@ class Package < ActiveRecord::Base
   validates :github_repository, presence: true
 
   after_initialize :set_hosting_and_owner_and_repo_by_url
+  after_create :kick_import_package
 
   def self.attributes_by_url(url)
     match = GITHUB_URL_REGEXP.match(url)
@@ -55,5 +56,9 @@ class Package < ActiveRecord::Base
     attrs.each do |k, v|
       write_attribute(k, v)
     end
+  end
+
+  def kick_import_package
+    ImportPackageJob.perfom_later
   end
 end
