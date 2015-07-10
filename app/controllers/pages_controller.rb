@@ -6,4 +6,13 @@ class PagesController < ApplicationController
       @packages = Package.order(updated_at: :desc).limit(20)
     end
   end
+
+  def badge
+    expires_in 1.month, public: true
+
+    respond_to do |format|
+      format.svg { render :badge }
+      format.html
+    end
+  end
 end
