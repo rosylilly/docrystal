@@ -16,7 +16,9 @@ class DocsController < ApplicationController
   def repository(hosting, owner, repo)
     @package = Package.find_or_create_by!(hosting: hosting, owner: owner, repo: repo)
 
-    redirect_to '/' + [@package.path, @package.default_branch].join('/')
+    branch = @package.branch_by(request.referer)
+
+    redirect_to '/' + [@package.path, branch].join('/')
   end
 
   def show(hosting, owner, repo, sha)

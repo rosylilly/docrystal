@@ -4,7 +4,9 @@ class Package < ActiveRecord::Base
   HOSTINGS = %w(github.com)
   GITHUB_USER_NAME_REGEXP = %r{[a-zA-Z0-9](?:[a-zA-Z0-9-]+)}
   GITHUB_REPO_NAME_REGEXP = %r{[^/]+}
+  GITHUB_COMMITISH_REGEXP = %r{[^/]+}
   GITHUB_URL_REGEXP = %r{https?://github\.com/(?<owner>#{GITHUB_USER_NAME_REGEXP})/(?<repo>#{GITHUB_REPO_NAME_REGEXP})(?:$|/)}x
+  GITHUB_URL_WITH_COMMITISH_REGEXP = %r{https?://github\.com/(?<owner>#{GITHUB_USER_NAME_REGEXP})/(?<repo>#{GITHUB_REPO_NAME_REGEXP})/tree/(?<commitish>#{GITHUB_COMMITISH_REGEXP})}x
 
   attr_accessor :url
 
@@ -45,6 +47,13 @@ class Package < ActiveRecord::Base
 
   def default_branch
     github_repository.default_branch
+  end
+
+  def branch_by(referer)
+    match = GITHUB_URL_WITH_COMMITISH_REGEXP.match(referer)
+    return default_branch unless match
+
+    match[:commitish]
   end
 
   private
