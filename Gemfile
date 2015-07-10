@@ -26,6 +26,7 @@ gem 'pusher'
 gem 'rack-rewrite'
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'redis', require: %w(redis redis/connection/hiredis)
+gem 'rollbar'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
 gem 'slim-rails'
@@ -33,7 +34,6 @@ gem 'uglifier', '>= 1.3.0'
 
 group :production do
   gem 'rails_12factor'
-  gem 'rollbar'
 end
 
 group :development, :test do
