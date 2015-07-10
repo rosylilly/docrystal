@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#root'
+  get 'badge' => 'pages#badge'
 
   constraints DocsController::CONSTRAINTS do
     get ':hosting/:owner/:repo' => 'docs#repository'
