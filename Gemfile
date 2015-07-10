@@ -24,7 +24,7 @@ gem 'sidekiq'
 gem 'slim-rails'
 gem 'uglifier', '>= 1.3.0'
 
-gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: :productioo
 
 group :development, :test do
   gem 'byebug'
