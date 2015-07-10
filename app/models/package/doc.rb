@@ -38,9 +38,9 @@ class Package::Doc < ActiveRecord::Base
 
   def get_doc_file(name, &block)
     Docrystal.s3.get_object({
-      bucket: self.class.bucket_name,
-      key: s3_prefix.join(name).to_s
-    }, &block)
+                              bucket: self.class.bucket_name,
+                              key: s3_prefix.join(name).to_s
+                            }, &block)
   end
 
   def update_by_github

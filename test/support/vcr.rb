@@ -11,7 +11,7 @@ module ActiveSupport::TestCase::VCR
     def use_vcr(name)
       class_eval(<<-EOC)
         around do |tests|
-          use_vcr(name, &tests)
+          use_vcr(#{name.inspect}, &tests)
         end
       EOC
     end

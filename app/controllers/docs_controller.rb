@@ -1,5 +1,5 @@
 class DocsController < ApplicationController
-  HOSTING_REGEXP = /#{Package::HOSTINGS.map {|h| Regexp.escape(h) }.join('|')}/x
+  HOSTING_REGEXP = %r{#{Package::HOSTINGS.map { |h| Regexp.escape(h) }.join('|')}}x
   OWNER_REGEXP = Package::GITHUB_USER_NAME_REGEXP
   REPO_REGEXP = Package::GITHUB_REPO_NAME_REGEXP
   SHA_REGEXP = %r{[^/]+}

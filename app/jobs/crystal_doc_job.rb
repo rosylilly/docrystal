@@ -36,9 +36,7 @@ class CrystalDocJob < ActiveJob::Base
     @doc.touch(:generated_at)
     Pusher["doc-#{@doc.sha}"].trigger('generated', {}) if Pusher.key
   ensure
-    if @doc && File.directory?(working_dir)
-      FileUtils.rm_rf(working_dir)
-    end
+    FileUtils.rm_rf(working_dir) if @doc && File.directory?(working_dir)
     Dir.chdir(Rails.root.to_s)
   end
 

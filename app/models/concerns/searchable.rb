@@ -12,21 +12,21 @@ module Searchable
           filter: {
             greek_lowercase_filter: {
               type:     'lowercase',
-              language: 'greek',
-            },
+              language: 'greek'
+            }
           },
           tokenizer: {
             ngram_tokenizer: {
               type: 'nGram',
               min_gram: '2',
               max_gram: '3',
-              token_chars: ['letter', 'digit']
+              token_chars: %w(letter digit)
             }
           },
           analyzer: {
             ngram_analyzer: {
               tokenizer: 'ngram_tokenizer',
-              filter:    ['greek_lowercase_filter'],
+              filter:    ['greek_lowercase_filter']
             }
           }
         }

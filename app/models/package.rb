@@ -45,9 +45,7 @@ class Package < ActiveRecord::Base
     nil
   end
 
-  def default_branch
-    github_repository.default_branch
-  end
+  delegate :default_branch, to: :github_repository
 
   def branch_by(referer)
     match = GITHUB_URL_WITH_COMMITISH_REGEXP.match(referer)
@@ -63,7 +61,7 @@ class Package < ActiveRecord::Base
     return if attrs.empty?
 
     attrs.each do |k, v|
-      write_attribute(k, v)
+      self[k] = v
     end
   end
 

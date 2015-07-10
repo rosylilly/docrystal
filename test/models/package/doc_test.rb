@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 describe Package::Doc do
   use_vcr('octokit')

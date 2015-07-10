@@ -8,7 +8,7 @@ require 'minitest/rails'
 # require "minitest/rails/capybara"
 
 # Uncomment for awesome colorful output
-require "minitest/pride"
+require 'minitest/pride'
 
 Dir[Rails.root.join('test/support/**/*.rb').to_s].each do |support|
   require support
