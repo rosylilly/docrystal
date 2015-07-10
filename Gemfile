@@ -31,7 +31,10 @@ gem 'sidekiq'
 gem 'slim-rails'
 gem 'uglifier', '>= 1.3.0'
 
-gem 'rails_12factor', group: :productioo
+group :production do
+  gem 'rails_12factor'
+  gem 'rollbar'
+end
 
 group :development, :test do
   gem 'byebug'

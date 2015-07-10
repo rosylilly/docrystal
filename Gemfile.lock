@@ -205,6 +205,8 @@ GEM
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
+    rollbar (1.5.3)
+      multi_json (~> 1.3)
     rubocop (0.32.1)
       astrolabe (~> 1.3)
       parser (>= 2.2.2.5, < 3.0)
@@ -307,6 +309,7 @@ DEPENDENCIES
   rails!
   rails_12factor
   redis
+  rollbar
   rubocop
   sass-rails (~> 5.0)
   sidekiq
