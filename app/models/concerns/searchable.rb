@@ -35,7 +35,14 @@ module Searchable
       mapping do
         indexes :id, type: 'integer', index: 'not_analyzed'
         indexes :path, type: 'string', analyzer: 'ngram_analyzer'
+        indexes :hosting, type: 'string', analyzer: 'ngram_analyzer'
+        indexes :owner, type: 'string', analyzer: 'ngram_analyzer'
+        indexes :repo, type: 'string', analyzer: 'ngram_analyzer'
       end
     end
+  end
+
+  def as_indexed_json(options = {})
+    super(options).merge(path: path.to_s)
   end
 end
