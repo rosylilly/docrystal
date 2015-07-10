@@ -37,6 +37,7 @@ class CrystalDocJob < ActiveJob::Base
     if @doc && File.directory?(working_dir)
       FileUtils.rm_rf(working_dir)
     end
+    Dir.chdir(Rails.root.to_s)
   end
 
   def working_dir
