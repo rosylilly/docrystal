@@ -2,7 +2,7 @@ class CreatePackageDocs < ActiveRecord::Migration
   def change
     create_table :package_docs do |t|
       t.belongs_to :package, index: true, foreign_key: true, null: false
-      t.string :name, null: true
+      t.string :name, null: false
       t.string :sha, null: false
       t.datetime :generated_at, null: true
 

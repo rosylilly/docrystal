@@ -22,7 +22,7 @@ describe Package::Doc do
       doc = Package::Doc.new(package: package, name: '5f5b591a44bcb9cb1e29d0dfd4f02ec7afcc7fa9')
 
       assert doc.sha == '5f5b591a44bcb9cb1e29d0dfd4f02ec7afcc7fa9'
-      assert doc.name.nil?
+      assert doc.name == doc.sha
     end
 
     it 'do not detect not found branch' do

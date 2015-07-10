@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+
+  site:
+    title: "docrystal.org"
+    description: "docrystal.org hosts documentation for Crystal packages on GitHub"

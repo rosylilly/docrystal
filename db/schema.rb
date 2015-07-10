@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150709203600) do
 
   create_table "package_docs", force: :cascade do |t|
     t.integer  "package_id",   null: false
-    t.string   "name"
+    t.string   "name",         null: false
     t.string   "sha",          null: false
     t.datetime "generated_at"
     t.datetime "created_at",   null: false

@@ -20,9 +20,18 @@ class CrystalDocJob < ActiveJob::Base
       crystal('docs')
 
       Dir['doc/**/*'].each do |file|
-        logger.info(file)
+        next if File.directory?(file)
+
+        path = file.sub(%r{^doc/}, '')
+        logger.info(path)
+
+        open(file) do |f|
+          @doc.save_doc_file(path, f)
+        end
       end
     end
+
+    @doc.touch(:generated_at)
   ensure
     if @doc && File.directory?(working_dir)
       FileUtils.rm_rf(working_dir)

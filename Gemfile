@@ -3,13 +3,20 @@ source 'https://rubygems.org'
 ruby '2.2.2'
 
 gem 'action_args'
+gem 'aws-sdk', '~> 2.1.4'
+gem 'bitters'
+gem 'bourbon'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'event_tracker'
 gem 'hiredis'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'meta-tags'
+gem 'neat'
 gem 'octokit'
 gem 'pg'
+gem 'puma'
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'redis', require: %w(redis redis/connection/hiredis)
 gem 'sass-rails', '~> 5.0'
@@ -19,9 +26,10 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
+  gem 'fakes3'
   gem 'minitest-rails'
+  gem 'spring'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development do

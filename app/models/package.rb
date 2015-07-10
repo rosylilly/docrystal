@@ -27,7 +27,7 @@ class Package < ActiveRecord::Base
   end
 
   def path
-    [hosting, owner, repo].join('/')
+    Pathname.new([hosting, owner, repo].join('/'))
   end
 
   def github_repo_name

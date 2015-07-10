@@ -1,0 +1,19 @@
+doctype 5
+html
+  head
+    meta(charset="UTF-8")
+    = render 'meta'
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tag
+  body
+
+    section.container
+      .wrapper
+        h1= link_to t('site.title'), root_path
+        p= t('site.description')
+
+        = yield
+
+        footer
+          p= link_to '@rosylilly', 'https://github.com/rosylilly'
