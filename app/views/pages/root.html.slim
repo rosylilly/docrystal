@@ -1,9 +1,13 @@
 form(class="search-bar" role="search")
-  input(type="search" placeholder="e.g. rosylilly/power_assert.cr")
+  input(type="search" name="q" placeholder="e.g. rosylilly/power_assert.cr" value="#{params[:q]}")
   button(type="submit")
     img(src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon")
 
-h2 Recent Updated Packages
+h2
+  - if params[:q].empty?
+    | Recent Updated Packages
+  - else
+    | "#{params[:q]}" packages
 
 ul
   - @packages.each do |package|
