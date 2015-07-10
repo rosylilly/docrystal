@@ -95,6 +95,7 @@ GEM
     connection_pool (2.2.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
+    dalli (2.7.4)
     database_rewinder (0.5.2)
     debug_inspector (0.0.2)
     dotenv (2.0.2)
@@ -110,6 +111,8 @@ GEM
       thor
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    faraday-http-cache (1.1.1)
+      faraday (~> 0.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     hiredis (0.6.0)
@@ -256,10 +259,12 @@ DEPENDENCIES
   bourbon
   byebug
   coffee-rails (~> 4.1.0)
+  dalli
   database_rewinder
   dotenv-rails
   event_tracker
   fakes3
+  faraday-http-cache
   hiredis
   jbuilder (~> 2.0)
   jquery-rails
