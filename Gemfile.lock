@@ -76,6 +76,7 @@ GEM
       bourbon (>= 3.2)
       sass (>= 3.2)
       thor
+    bonsai-elasticsearch-rails (0.0.4)
     bourbon (4.2.3)
       sass (~> 3.4)
       thor
@@ -102,6 +103,19 @@ GEM
     dotenv-rails (2.0.2)
       dotenv (= 2.0.2)
       railties (~> 4.0)
+    elasticsearch (1.0.12)
+      elasticsearch-api (= 1.0.12)
+      elasticsearch-transport (= 1.0.12)
+    elasticsearch-api (1.0.12)
+      multi_json
+    elasticsearch-model (0.1.7)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.7)
+    elasticsearch-transport (1.0.12)
+      faraday
+      multi_json
     erubis (2.7.0)
     event_tracker (0.3.0)
       rails (>= 3.0)
@@ -115,6 +129,7 @@ GEM
       faraday (~> 0.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    hashie (3.4.2)
     hiredis (0.6.0)
     hitimes (1.2.2)
     httpclient (2.6.0.1)
@@ -262,12 +277,15 @@ DEPENDENCIES
   action_args
   aws-sdk (~> 2.1.4)
   bitters
+  bonsai-elasticsearch-rails
   bourbon
   byebug
   coffee-rails (~> 4.1.0)
   dalli
   database_rewinder
   dotenv-rails
+  elasticsearch-model
+  elasticsearch-rails
   event_tracker
   fakes3
   faraday-http-cache

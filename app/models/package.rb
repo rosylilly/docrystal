@@ -1,4 +1,6 @@
 class Package < ActiveRecord::Base
+  include Searchable
+
   HOSTINGS = %w(github.com)
   GITHUB_USER_NAME_REGEXP = %r{[a-zA-Z0-9](?:[a-zA-Z0-9-]+)}
   GITHUB_REPO_NAME_REGEXP = %r{[^/]+}
