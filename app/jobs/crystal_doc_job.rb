@@ -15,23 +15,21 @@ class CrystalDocJob < ActiveJob::Base
 
     git('clone', @doc.package.github_repository.git_url, working_dir)
 
-    Dir.chdir(working_dir) do
-      git('checkout', @doc.sha)
+    git('checkout', @doc.sha)
 
-      FileUtils.rm_rf(working_dir.join('doc'))
+    FileUtils.rm_rf(working_dir.join('doc'))
 
-      crystal('deps', 'install')
-      crystal('docs')
+    crystal('deps', 'install')
+    crystal('docs')
 
-      Dir['doc/**/*'].each do |file|
-        next if File.directory?(file)
+    Dir[working_dir.join('doc/**/*')].each do |file|
+      next if File.directory?(file)
 
-        path = file.sub(%r{^doc/}, '')
-        logger.info(path)
+      path = file.sub(%r{^#{Regexp.escape(working_dir.to_s)}/doc/}, '')
+      logger.info(path)
 
-        open(file) do |f|
-          @doc.save_doc_file(path, f)
-        end
+      open(file) do |f|
+        @doc.save_doc_file(path, f)
       end
     end
 
