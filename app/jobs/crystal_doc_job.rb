@@ -32,7 +32,7 @@ class CrystalDocJob < ActiveJob::Base
     end
 
     @doc.touch(:generated_at)
-    Pusher["doc-#{@doc.sha}"].trigger('generated')
+    Pusher["doc-#{@doc.sha}"].trigger('generated', {})
   ensure
     if @doc && File.directory?(working_dir)
       FileUtils.rm_rf(working_dir)
