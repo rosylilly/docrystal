@@ -46,9 +46,11 @@ class Package::Doc < ActiveRecord::Base
   def update_by_github
     return if name == sha
 
+    prev_sha = self.sha
     self.sha = nil
     detect_sha_by_branch
     detect_sha_by_tag
+    self.generated_at = nil if sha != prev_sha
     save
   end
 

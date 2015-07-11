@@ -66,6 +66,6 @@ class Package < ActiveRecord::Base
   end
 
   def kick_import_package
-    ImportPackageJob.perfom_later
+    ImportPackageJob.perform_later
   end
 end
