@@ -28,7 +28,6 @@ gem 'rack-rewrite'
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'redis', require: %w(redis redis/connection/hiredis)
 gem 'responders'
-gem 'rollbar'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
 gem 'slim-rails'
