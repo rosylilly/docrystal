@@ -10,8 +10,10 @@ class PagesController < ApplicationController
   def badge
     expires_in 1.month, public: true
 
+    style = (%w(round plastic).include?(params[:style]) ? params[:style].to_s : nil)
+
     respond_to do |format|
-      format.svg { render :badge }
+      format.svg { render "badge#{ style ? "-#{style}" : '' }" }
       format.html
     end
   end
