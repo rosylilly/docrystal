@@ -41,8 +41,6 @@ class Package < ActiveRecord::Base
 
   def github_repository
     Octokit.repository(github_repo_name)
-  rescue Octokit::NotFound
-    nil
   end
 
   delegate :default_branch, to: :github_repository

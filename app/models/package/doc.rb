@@ -82,7 +82,6 @@ class Package::Doc < ActiveRecord::Base
 
     self.sha = Octokit.commit(package.github_repo_name, name).sha
     self.name = sha
-  rescue Octokit::NotFound
   end
 
   def kick_generate_job

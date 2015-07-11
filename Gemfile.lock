@@ -205,6 +205,10 @@ GEM
     rails_stdout_logging (0.0.3)
     rainbow (2.0.0)
     rake (10.4.2)
+    rambulance (0.3.1)
+      actionpack
+      activesupport
+      railties
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
@@ -314,6 +318,7 @@ DEPENDENCIES
   rack-rewrite
   rails!
   rails_12factor
+  rambulance
   redis
   responders
   rubocop
