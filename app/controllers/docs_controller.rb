@@ -13,6 +13,8 @@ class DocsController < ApplicationController
     file: FILE_REGEXP
   }
 
+  skip_around_action :append_event_tracking_tags, only: %i(file_serve)
+
   def repository(hosting, owner, repo)
     @package = Package.find_or_create_by!(hosting: hosting, owner: owner, repo: repo)
 
