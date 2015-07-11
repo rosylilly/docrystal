@@ -19,7 +19,7 @@ class CrystalDocJob < ActiveJob::Base
 
     FileUtils.rm_rf(working_dir.join('doc'))
 
-    crystal('deps', 'install')
+    crystal('deps', 'install') if File.exist?(working_dir.join('Projectfile').to_s)
     crystal('docs')
 
     Dir[working_dir.join('doc/**/*')].each do |file|
@@ -37,7 +37,6 @@ class CrystalDocJob < ActiveJob::Base
     Pusher["doc-#{@doc.sha}"].trigger('generated', {}) if Pusher.key
   ensure
     FileUtils.rm_rf(working_dir) if @doc && File.directory?(working_dir)
-    Dir.chdir(Rails.root.to_s)
   end
 
   def working_dir
