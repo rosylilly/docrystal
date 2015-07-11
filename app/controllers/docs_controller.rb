@@ -22,7 +22,7 @@ class DocsController < ApplicationController
   end
 
   def show(hosting, owner, repo, sha)
-    @package = Package.find_or_create_by!(hosting: hosting, owner: owner, repo: repo)
+    @package = Package.find_by!(hosting: hosting, owner: owner, repo: repo)
     @doc = @package.docs.find_or_create_by(name: sha)
 
     @doc.update_by_github
