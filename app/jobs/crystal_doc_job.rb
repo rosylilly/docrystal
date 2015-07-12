@@ -22,7 +22,7 @@ class CrystalDocJob < ActiveJob::Base
     crystal('deps', 'install') if File.exist?(working_dir.join('Projectfile').to_s)
 
     if @doc.package.github_repo_name == 'manastech/crystal'
-      shell('make', 'doc')
+      shell('./bin/crystal', 'doc', 'docs/main.cr')
     else
       crystal('doc')
     end
