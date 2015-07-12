@@ -20,7 +20,10 @@ class CrystalDocJob < ActiveJob::Base
     FileUtils.rm_rf(working_dir.join('doc'))
 
     crystal('deps', 'install') if File.exist?(working_dir.join('Projectfile').to_s)
-    crystal('docs')
+
+    doc_args = []
+    doc_args << 'docs/main.cr' if File.exist?(working_dir.join('docs/main.cr').to_s)
+    crystal('doc', *doc_args)
 
     Dir[working_dir.join('doc/**/*')].each do |file|
       next if File.directory?(file)
