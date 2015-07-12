@@ -21,9 +21,11 @@ class CrystalDocJob < ActiveJob::Base
 
     crystal('deps', 'install') if File.exist?(working_dir.join('Projectfile').to_s)
 
-    doc_args = []
-    doc_args << 'docs/main.cr' if File.exist?(working_dir.join('docs/main.cr').to_s)
-    crystal('doc', *doc_args)
+    if @doc.package.github_repo_name == 'manastech/crystal'
+      shell('make', 'doc')
+    else
+      crystal('doc')
+    end
 
     Dir[working_dir.join('doc/**/*')].each do |file|
       next if File.directory?(file)
@@ -47,6 +49,7 @@ class CrystalDocJob < ActiveJob::Base
   end
 
   def git(cmd, *args)
+    logger.info("$ git #{cmd} #{args.join(' ')}")
     Open3.popen3("git #{cmd} #{args.join(' ')}", chdir: working_dir) do |input, stdout, stderr, wait|
       input.close
 
@@ -63,7 +66,25 @@ class CrystalDocJob < ActiveJob::Base
   end
 
   def crystal(cmd, *args)
+    logger.info("$ crystal #{cmd} #{args.join(' ')}")
     Open3.popen3("crystal #{cmd} #{args.join(' ')}", chdir: working_dir) do |input, stdout, stderr, wait|
+      input.close
+
+      stdout.each do |line|
+        logger.info(line)
+      end
+
+      stderr.each do |line|
+        logger.error(line)
+      end
+
+      wait.value
+    end
+  end
+
+  def shell(cmd, *args)
+    logger.info("$ #{cmd} #{args.join(' ')}")
+    Open3.popen3("#{cmd} #{args.join(' ')}", chdir: working_dir) do |input, stdout, stderr, wait|
       input.close
 
       stdout.each do |line|
